@@ -1,19 +1,17 @@
 import pyodbc
+import os
+from dotenv import load_dotenv
 
-connection = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER=DAVID-PC;DATABASE=test-santander;Trusted_Connection=yes;autocommit=True')
+load_dotenv()
+
+MY_DRIVER = os.getenv('MY_DRIVER')
+MY_SERVER = os.getenv('MY_SERVER')
+MY_DATABASE = os.getenv('MY_DATABASE')
+
+connection = pyodbc.connect(f'DRIVER={MY_DRIVER};SERVER={MY_SERVER};DATABASE={MY_DATABASE};Trusted_Connection=yes;autocommit=True')
 
 # conn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};
 #                        SERVER=<your_server>
 #                        DATABASE=<your_database>;
 #                        UID=<user>;
 #                        PWD=<passwd>')
-
-# cursor=connection.cursor()
-# cursor.execute("SELECT * from test_santander")
-# while 1:
-#     row = cursor.fetchone()
-#     if not row:
-#         break
-#     print(row)
-# cursor.close()
-# connection.close()

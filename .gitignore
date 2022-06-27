@@ -1,2 +1,6 @@
 venv*
 __init__.py
+backup
+__pycache__
+*.zip
+*.log

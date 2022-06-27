@@ -28,7 +28,6 @@ def read_all_files_to_json(path:str)-> list:
                all_files_to_json.append(parse_file_to_json(files))
             except BaseException as err:
                 print('\nsomething went wrong!\n')
-                print(f'{sys.exc_info()}\n')
                 print(f'{err} \n')
                 
         
