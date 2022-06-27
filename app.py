@@ -6,7 +6,7 @@ from log_maker import logger_info,logger_error
 
 def backup_database() -> None:
     
-    logger_info.info('backup your database...')
+    logger_info.info('backup database')
     
     dt = datetime.now()
     date = dt.strftime("%d_%m_%y_%H_%M_%S_%f")
@@ -21,18 +21,18 @@ def backup_database() -> None:
         
         df.to_csv('.\script-excel-to-sqlerver\\backup\\'+date+'_.zip', index=False,
             compression=compression_opts)
-        logger_info.info('retrieving information from your database - successful -')
+        logger_info.info('retrieving information from database - successful -')
         logger_info.info('ZIP created - successful -')
     except BaseException as err:
-        logger_error.error('something went wrong on backup of your database', exc_info=True)
+        logger_error.error('something went wrong on backup database', exc_info=True)
         logger_error.error(err)
-        logger_info.info('something went wrong on backup of your database')
+        logger_info.info('something went wrong on backup database')
         
         
 
 def clean_database() -> None:
     
-    logger_info.info('cleaning your database...')
+    logger_info.info('cleaning database')
     
     try:
         cursor.execute("TRUNCATE TABLE [test_santander]")
@@ -40,16 +40,16 @@ def clean_database() -> None:
         
         logger_info.info('- succesfull - ')
     except BaseException as err:
-        logger_error.error('something went wrong cleaning your database',exc_info=True)
+        logger_error.error('something went wrong cleaning database',exc_info=True)
         logger_error.error(err)
-        logger_info.info('something went wrong cleaning your database')
+        logger_info.info('something went wrong cleaning database')
         
     
     
 
 def insert_data_into_sqlserver(json_lis:list) -> None:
     
-    logger_info.info('Adding data into your database...')
+    logger_info.info('Adding data into database')
     
     for row in json_lis:
         
