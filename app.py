@@ -55,7 +55,7 @@ def insert_data_into_sqlserver(json_lis:list) -> None:
         
         if utils.validator.isValid(row):
             try:
-                cursor.execute("INSERT INTO [test_santanderp] (field_1,field_2,field_13) values(?,?,?)",row["field_1"],row["field_2"],row["field_13"])
+                cursor.execute("INSERT INTO [test_santander] (field_1,field_2,field_13) values(?,?,?)",row["field_1"],row["field_2"],row["field_13"])
             except BaseException as err:
                 logger_error.error(f'Data not added into database - {row}', exc_info=True)
                 logger_error.error(err)
