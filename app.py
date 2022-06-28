@@ -59,11 +59,12 @@ def insert_data_into_sqlserver(json_lis:list) -> None:
             except BaseException as err:
                 logger_error.error(f'Data not added into database - {row}', exc_info=True)
                 logger_error.error(err)
+                logger_info.info(f'Data not added into database - {row}')
         else:
             logger_error.error(f'validation error, type error in some fields=> {row}')
             print(f'validation error, type error in some fields=> {row}')
             
-        
+    logger_info.info(f'Adding finished')    
     conn.connection.commit()
     
    
